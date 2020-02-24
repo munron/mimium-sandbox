@@ -4,6 +4,17 @@ kicksize = loadwavsize(kick)
 kickwav = loadwav(kick)
 
 
+fn tau2pole(tau){
+    return exp(-1.0/(tau*48000))
+}
+
+// "fb" should be in range of 0 to 0.99999.... 0 bypasses, 1 cuts all frequencies.
+fn lpf(input:float,fb:float){    
+    return (1-fb)*input + fb*self
+}
+freq = 10000
+
+
 fn seek(speed,size,reset){
     return if(reset>0) self+speed else  0
 }

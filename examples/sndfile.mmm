@@ -1,5 +1,5 @@
 //please replace paths of sound files to absolute path of your files
-kick = "../examples/Kick.wav"
+kick = "../assets/Kick.wav"
 kicksize = loadwavsize(kick)
 kickwav = loadwav(kick)
 

@@ -85,11 +85,11 @@ fn synthtrigger(duration:float)->void{
 }
 synthtrigger(48000)@0
 
-kick = "./Kick.wav"
+kick = "../assets/Kick.wav"
 kicksize = loadwavsize(kick)
 kickwav = loadwav(kick)
 
-snare = "./Hat.wav"
+snare = "../assets/Hat.wav"
 snaresize = loadwavsize(snare)
 snarewav = loadwav(snare)
 
@@ -120,7 +120,7 @@ fn strigger(duration)->void{
     strigger(duration)@(now+nextdur)
 }
 
-seawave = ".Chickens.wav"
+seawave = "../assets/Chickens.wav"
 
 seasize = loadwavsize(seawave)
 seawav = loadwav(seawave)
