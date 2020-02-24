@@ -1,0 +1,15 @@
+// sample of 1 pole low pass filter function
+
+//convert time constants to pole(taken from tau2pole() in faust's basic.lib)
+fn tau2pole(tau){
+    return exp(-1.0/(tau*48000))
+}
+
+// "fb" should be in range of 0 to 0.99999.... 0 bypasses, 1 cuts all frequencies.
+fn lpf(input:float,fb:float){    
+    return (1-fb)*input + fb*self
+}
+freq = 10000
+fn dsp(time:float)->float{
+    return  lpf(random(),tau2pole(1/freq))
+}

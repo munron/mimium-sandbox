@@ -1,0 +1,27 @@
+//please replace paths of sound files to absolute path of your files
+kick = "../examples/Kick.wav"
+kicksize = loadwavsize(kick)
+kickwav = loadwav(kick)
+
+kt=1
+fn seek(speed,size,reset){
+    return if(reset>0) self+speed else  0
+}
+
+fn setkval(val){
+    kt=val
+}
+fn ktrigger(duration)->void{
+    setkval(0)@now
+    setkval(1)@(now+1)
+    nextdur = if(random()>0) duration else duration/2
+    ktrigger(duration)@(now+nextdur)
+}
+
+
+
+fn dsp(time)->float{
+    kpos = seek(1.0,kicksize,kt)
+    return kickwav[kpos]
+}
+ktrigger(24000)@0
