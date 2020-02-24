@@ -1,5 +1,5 @@
 //please replace paths of sound files to absolute path of your files
-kick = "../assets/myheart.wav"
+kick = "../assets/Kick.wav"
 kicksize = loadwavsize(kick)
 kickwav = loadwav(kick)
 
@@ -12,15 +12,25 @@ fn tau2pole(tau){
 fn lpf(input:float,fb:float){    
     return (1-fb)*input + fb*self
 }
-freq = 10000
+
+//ハイパスフィルタの組み方がわかりません
+inner = 0
+fn hpf(input:float,fb:float){
+	ret = fb*self + fb*(input - inner)
+    inner = input
+    return ret
+}
+freq = 50
 
 
 fn seek(speed,size,reset){
     return if(reset>0) self+speed else  0
 }
 
+
+inner = 0
 fn dsp(time)->float{
-    // どうして....
     originTime = time * 2
-    return (kickwav[originTime])
+    // return kickwav[originTime]
+    return hpf(kickwav[originTime],tau2pole(1/freq))
 }
