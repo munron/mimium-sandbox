@@ -1,0 +1,15 @@
+//please replace paths of sound files to absolute path of your files
+kick = "../assets/myheart.wav"
+kicksize = loadwavsize(kick)
+kickwav = loadwav(kick)
+
+
+fn seek(speed,size,reset){
+    return if(reset>0) self+speed else  0
+}
+
+fn dsp(time)->float{
+    // どうして....
+    originTime = time * 2
+    return (kickwav[originTime])
+}
